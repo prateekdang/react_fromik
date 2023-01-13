@@ -7,11 +7,15 @@ const initialValues = {
     email: "",
     channel: "",
     comments: "",
-    address: ""
+    address: "",
+    social:{
+        facebook:"",
+        instagram:""
+    }
 }
-const onSubmit = (values,{resetForm}) => {
+const onSubmit = (values, { resetForm }) => {
     console.log("Formik Values=>", values)
-    resetForm({values:''})
+    resetForm({ values: '' })
 }
 const validationSchema = Yup.object({
     name: Yup.string().required("Required!"),
@@ -64,6 +68,14 @@ function YoutubeForm() {
                         }
                     </Field>
                     <ErrorMessage name="address" />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='facebook'>Facebook Profile</label>
+                    <Field type='text'name='social.facebook' id='facebook'/>
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='instagram'>Instagram Profile</label>
+                    <Field type='text'name='social.instagram' id='instagram'/>
                 </div>
                 <button type='submit'>Submit</button>
             </Form>
