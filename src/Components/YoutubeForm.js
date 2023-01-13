@@ -9,8 +9,9 @@ const initialValues = {
     comments: "",
     address: ""
 }
-const onSubmit = values => {
+const onSubmit = (values,{resetForm}) => {
     console.log("Formik Values=>", values)
+    resetForm({values:''})
 }
 const validationSchema = Yup.object({
     name: Yup.string().required("Required!"),
