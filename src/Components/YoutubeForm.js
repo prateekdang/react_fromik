@@ -1,6 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import Testerror from './Testerror'
 
 const initialValues = {
     name: "",
@@ -8,10 +9,11 @@ const initialValues = {
     channel: "",
     comments: "",
     address: "",
-    social:{
-        facebook:"",
-        instagram:""
-    }
+    social: {
+        facebook: "",
+        instagram: ""
+    },
+    phoneNumber: ["", ""]
 }
 const onSubmit = (values, { resetForm }) => {
     console.log("Formik Values=>", values)
@@ -35,22 +37,22 @@ function YoutubeForm() {
                 <div className='form-control'>
                     <label htmlFor='name'>Name</label>
                     <Field type='text' id='name' name='name' />
-                    <ErrorMessage name="name" />
+                    <ErrorMessage name="name" component={Testerror} />
                 </div>
                 <div className='form-control'>
                     <label htmlFor='email'>E-mail</label>
                     <Field type='email' id='email' name='email' />
-                    <ErrorMessage name="email" />
+                    <ErrorMessage name="email" component={Testerror} />
                 </div>
                 <div className='form-control'>
                     <label htmlFor='channel'>Channel</label>
                     <Field type='text' id='channel' name='channel' />
-                    <ErrorMessage name="channel" />
+                    <ErrorMessage name="channel" component={Testerror} />
                 </div>
                 <div className='form-control'>
                     <label htmlFor='comments'>comments</label>
                     <Field as='textarea' id='comments' name='comments' />
-                    <ErrorMessage name="comments" />
+                    <ErrorMessage name="comments" component={Testerror} />
                 </div>
                 <div className='form-control'>
                     <label htmlFor='address'>Address</label>
@@ -67,15 +69,23 @@ function YoutubeForm() {
                             }
                         }
                     </Field>
-                    <ErrorMessage name="address" />
+                    <ErrorMessage name="address" component={Testerror} />
                 </div>
                 <div className='form-control'>
                     <label htmlFor='facebook'>Facebook Profile</label>
-                    <Field type='text'name='social.facebook' id='facebook'/>
+                    <Field type='text' id='facebook' name='social.facebook' />
                 </div>
                 <div className='form-control'>
                     <label htmlFor='instagram'>Instagram Profile</label>
-                    <Field type='text'name='social.instagram' id='instagram'/>
+                    <Field type='text' id='instagram' name='social.instagram' />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='primaryph'> Primary MobileNo</label>
+                    <Field type='text' id='primaryph' name='phoneNumber[0]' />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='secondaryph'>Secondary MobileNo</label>
+                    <Field type='text' id='secondaryph' name='phoneNumber[1]' />
                 </div>
                 <button type='submit'>Submit</button>
             </Form>
